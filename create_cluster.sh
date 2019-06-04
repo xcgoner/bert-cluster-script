@@ -4,6 +4,7 @@ sudo sh -c "curl https://raw.githubusercontent.com/eric-haibin-lin/hudl/master/h
 export HOSTS=~/hosts/xcong-bert;
 
 hudl -v -h $HOSTS -c $HOSTS -d /home/ubuntu/hosts;
+hudl -v -h $HOSTS -c ./*.sh -d /home/ubuntu/;
 
 # hudl -t -v -h $HOSTS -d ~ -s dependency.sh eric-haibin-lin raw mxnet-cu90==1.5.0b20190525 mx-0525-raw-large-cased 2177746 90 py27;
 hudl -t -v -h $HOSTS -d /home/ubuntu -s dependency.sh dmlc raw mxnet-cu100 bert-baseline 2177746 100 py36;
