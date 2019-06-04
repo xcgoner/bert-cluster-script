@@ -54,6 +54,7 @@ $PIP -q install sentencepiece --user;
 
 echo "==================== installing MXNet $MX_PIP ==================== ";
 $PIP -q uninstall mxnet-cu90 -y;
+$PIP -q uninstall mxnet-cu100 -y;
 $PIP -q uninstall mxnet-cu101 -y;
 $PIP -q install $MX_PIP --user -U --no-cache-dir;
 $PIP list | grep mx;
