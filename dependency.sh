@@ -30,6 +30,10 @@ if [ $PY_VERSION = 'py36' ]; then
   export PY='python36';
   export PIP='pip-3.6';
 fi
+if [ $PY_VERSION = 'py' ]; then
+  export PY='python';
+  export PIP='pip';
+fi
 
 wget -q -O mount.sh https://gist.github.com/eric-haibin-lin/b7569d7ada15ca16a1815713880387fc/raw/c76e78bc38759d5be67757355bce9be28312fb67/mount.sh
 bash mount.sh
