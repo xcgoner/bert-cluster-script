@@ -4,7 +4,7 @@ sudo sh -c "curl https://raw.githubusercontent.com/eric-haibin-lin/hudl/master/h
 export HOSTS=~/hosts/xcong-bert;
 
 # hudl -v -h $HOSTS -c $HOSTS -d /home/ubuntu/hosts;
-hudl -v -h $HOSTS -c $HOSTS -d ~/hosts;
+hudl -v -h $HOSTS -c $HOSTS -d ~/;
 
 for SCRIPT in *.sh; do
     hudl -v -h $HOSTS -c $SCRIPT -d ~;
