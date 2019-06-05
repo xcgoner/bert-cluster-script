@@ -49,6 +49,8 @@ if [ $CUDA = '90' ]; then
   sudo rm -f /usr/local/cuda; sudo ln -s /usr/local/cuda-9.0 /usr/local/cuda;
 fi
 
+$PIP install --upgrade pip;
+
 $PIP -q install sentencepiece --user;
 
 
