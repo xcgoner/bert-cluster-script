@@ -44,8 +44,8 @@ BOOK_WIKI_CASED="$BOOK_CASED_DIR/train/part-*/*.npz,$WIKI_CASED_DIR/train/part-*
 BOOK_WIKI_CASED_EVAL="$BOOK_CASED_DIR/dev/part-*/*.npz,$WIKI_CASED_DIR/dev/part-*/*.npz";
 
 # BOOK_WIKI_UNCASED="$BOOK_UNCASED_DIR/train/part-*/*.npz,$WIKI_UNCASED_DIR/train/part-*/*.npz";
-# BOOK_WIKI_UNCASED="$BOOK_UNCASED_DIR/train/part-*/*.npz,$WIKI_UNCASED_DIR/train/part-*/*.npz";
-BOOK_WIKI_UNCASED_EVAL="/fsx/datasets/generated/xc*/train/part*/*.npz";
+# BOOK_WIKI_UNCASED_EVAL="$BOOK_UNCASED_DIR/dev/part-*/*.npz,$WIKI_UNCASED_DIR/dev/part-*/*.npz";
+BOOK_WIKI_UNCASED="/fsx/datasets/generated/xc*/train/part*/*.npz";
 BOOK_WIKI_UNCASED_EVAL="/fsx/datasets/generated/xc*/dev/part*/*.npz";
 
 WEB_BOOK_WIKI_UNCASED_EVAL="$DATA_DIR/dev/web-book-wiki-sp/*.npz";
