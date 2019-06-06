@@ -1,8 +1,8 @@
 if [ $# -le 11 ]; then
     echo 'usage: ';
-    echo 'bash run.sh base  book-wiki-cased       ~/hosts 64 npz 8192 2 0.0002828 0.08 125000  py27 experiment-name';
-    echo 'bash run.sh large book-wiki-uncased     ~/hosts 64 raw 2048 1 0.0001    0.01 1000000 py27 experiment-name';
-    echo 'bash run.sh base  web-book-wiki-uncased ~/hosts 64 raw 8192 1 0.0002    0.04 750000  py36 experiment-name /fsx/datasets/vocab/webtext-book-wiki/webtext_book_wiki_uncased_bpe_30k_sampled_20M.model';
+    echo 'bash run.sh base  book-wiki-cased       ~/hosts 64 bertadam npz 8192 2 0.0002828 0.08 125000  py27 experiment-name';
+    echo 'bash run.sh large book-wiki-uncased     ~/hosts 64 bertadam raw 2048 1 0.0001    0.01 1000000 py27 experiment-name';
+    echo 'bash run.sh base  web-book-wiki-uncased ~/hosts 64 bertadam raw 8192 1 0.0002    0.04 750000  py36 experiment-name /fsx/datasets/vocab/webtext-book-wiki/webtext_book_wiki_uncased_bpe_30k_sampled_20M.model';
     echo "number of arguments received=$#";
     exit -1;
 fi
@@ -11,15 +11,16 @@ export MODEL=$1;
 export DATASET=$2;
 export HOSTS=$3
 export NGPU=$4
-export FORMAT=$5
-export BS=$6
-export ACCUMULATE=$7
-export LR=$8
-export WARMUP=$9
-export NSTEP="${10}"
-export PY_VERSION="${11}"
-export EXP="${12}"
-export SPM="${13}"
+export OPTIMIZER=$5
+export FORMAT=$6
+export BS=$7
+export ACCUMULATE=$8
+export LR=$9
+export WARMUP=$10
+export NSTEP="${11}"
+export PY_VERSION="${12}"
+export EXP="${13}"
+export SPM="${14}"
 
 if [ $PY_VERSION = 'py27' ]; then
   export PY='python27';
@@ -28,7 +29,7 @@ elif [ $PY_VERSION = 'py36' ]; then
 fi
 echo "==================== arguments ==================== ";
 echo "model=$MODEL, dataset=$DATASET, hosts=$HOSTS, num_gpus=$NGPU, format=$FORMAT";
-echo "batch_size=$BS, accumulate=$ACCUMULATE, learning_rate=$LR, warmup=$WARMUP"
+echo "optimizer=$OPTIMIZER, batch_size=$BS, accumulate=$ACCUMULATE, learning_rate=$LR, warmup=$WARMUP"
 echo "num_steps=$NSTEP, python version=$PY_VERSION, sentencepiece=$SPM";
 
 DATA_DIR='/fsx/datasets/generated'
@@ -107,7 +108,7 @@ HPARAMS=" --batch_size $BS --accumulate $ACCUMULATE --lr $LR "
 
 echo -e "\n====================== command: ====================== "
 CMD=" $PY run_pretraining_hvd.py $HPARAMS --data $DATA_TRAIN \
-      --data_eval $DATA_EVAL --optimizer lamb --warmup_ratio $WARMUP --num_steps $NSTEP --log_interval=250 \
+      --data_eval $DATA_EVAL --optimizer $OPTIMIZER --warmup_ratio $WARMUP --num_steps $NSTEP --log_interval=250 \
       --ckpt_dir $CKPT_DIR/ckpt --ckpt_interval 25000 --num_buckets 10 --dataset_name $DATASET_NAME \
       --dtype float16 --use_avg_len --model $BERT_MODEL $EXTRA_FLAG "
 echo -e "$CMD \n =====================================================\n"
