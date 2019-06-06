@@ -1,4 +1,4 @@
-if [ $# -le 11 ]; then
+if [ $# -le 12 ]; then
     echo 'usage: ';
     echo 'bash run.sh base  book-wiki-cased       ~/hosts 64 bertadam npz 8192 2 0.0002828 0.08 125000  py27 experiment-name';
     echo 'bash run.sh large book-wiki-uncased     ~/hosts 64 bertadam raw 2048 1 0.0001    0.01 1000000 py27 experiment-name';
