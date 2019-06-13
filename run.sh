@@ -26,6 +26,8 @@ if [ $PY_VERSION = 'py27' ]; then
   export PY='python27';
 elif [ $PY_VERSION = 'py36' ]; then
   export PY='python36';
+elif [ $PY_VERSION = 'py3' ]; then
+  export PY='python3';
 fi
 echo "==================== arguments ==================== ";
 echo "model=$MODEL, dataset=$DATASET, hosts=$HOSTS, num_gpus=$NGPU, format=$FORMAT";
@@ -108,7 +110,7 @@ HPARAMS=" --batch_size $BS --accumulate $ACCUMULATE --lr $LR "
 
 echo -e "\n====================== command: ====================== "
 CMD=" $PY run_pretraining_hvd.py $HPARAMS --data $DATA_TRAIN \
-      --data_eval $DATA_EVAL --optimizer $OPTIMIZER --warmup_ratio $WARMUP --num_steps $NSTEP --log_interval=250 \
+      --data_eval $DATA_EVAL --optimizer $OPTIMIZER --warmup_ratio $WARMUP --num_steps $NSTEP --log_interval=250 --start_step=00000 \
       --ckpt_dir $CKPT_DIR/ckpt --ckpt_interval 25000 --num_buckets 10 --dataset_name $DATASET_NAME \
       --dtype float16 --use_avg_len --model $BERT_MODEL $EXTRA_FLAG "
 echo -e "$CMD \n =====================================================\n"

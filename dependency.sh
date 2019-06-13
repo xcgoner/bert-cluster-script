@@ -34,20 +34,24 @@ if [ $PY_VERSION = 'py' ]; then
   export PY='python';
   export PIP='pip';
 fi
+if [ $PY_VERSION = 'py3' ]; then
+  export PY='python3';
+  export PIP='pip3';
+fi
 
 wget -q -O mount.sh https://gist.github.com/eric-haibin-lin/b7569d7ada15ca16a1815713880387fc/raw/c76e78bc38759d5be67757355bce9be28312fb67/mount.sh
 bash mount.sh
 
 echo "==================== checking cuda $CUDA...  ==================== ";
-if [ $CUDA = '101' ]; then
-  sudo rm -f /usr/local/cuda; sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda;
-fi
-if [ $CUDA = '100' ]; then
-  sudo rm -f /usr/local/cuda; sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda;
-fi
-if [ $CUDA = '90' ]; then
-  sudo rm -f /usr/local/cuda; sudo ln -s /usr/local/cuda-9.0 /usr/local/cuda;
-fi
+# if [ $CUDA = '101' ]; then
+#   sudo rm -f /usr/local/cuda; sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda;
+# fi
+# if [ $CUDA = '100' ]; then
+#   sudo rm -f /usr/local/cuda; sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda;
+# fi
+# if [ $CUDA = '90' ]; then
+#   sudo rm -f /usr/local/cuda; sudo ln -s /usr/local/cuda-9.0 /usr/local/cuda;
+# fi
 
 # $PIP install --upgrade pip;
 
