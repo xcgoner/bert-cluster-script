@@ -46,7 +46,13 @@ WIKI_UNCASED_DIR="$DATA_DIR/generated-enwiki-feb-uncased-py3-512"
 BOOK_WIKI_CASED="$BOOK_CASED_DIR/train/part-*/*.npz,$WIKI_CASED_DIR/train/part-*/*.npz";
 BOOK_WIKI_CASED_EVAL="$BOOK_CASED_DIR/dev/part-*/*.npz,$WIKI_CASED_DIR/dev/part-*/*.npz";
 
-BOOK_WIKI_UNCASED="$BOOK_UNCASED_DIR/train/part-*/*.npz,$WIKI_UNCASED_DIR/train/part-*/*.npz";
+if [ "$MODEL" = 'small' ]; then
+  BOOK_WIKI_UNCASED="$BOOK_UNCASED_DIR/train/part-2*/*.npz,$BOOK_UNCASED_DIR/train/part-3*/*.npz,$WIKI_UNCASED_DIR/train/part-2*/*.npz,$WIKI_UNCASED_DIR/train/part-3*/*.npz";
+else
+  BOOK_WIKI_UNCASED="$BOOK_UNCASED_DIR/train/part-*/*.npz,$WIKI_UNCASED_DIR/train/part-*/*.npz";
+fi
+
+
 BOOK_WIKI_UNCASED_EVAL="$BOOK_UNCASED_DIR/dev/part-*/*.npz,$WIKI_UNCASED_DIR/dev/part-*/*.npz";
 # BOOK_WIKI_UNCASED="/fsx/datasets/generated/xc*/train/part*/*.npz";
 # BOOK_WIKI_UNCASED_EVAL="/fsx/datasets/generated/xc*/dev/part*/*.npz";
@@ -73,7 +79,9 @@ elif [ "$DATASET" = 'web-book-wiki-uncased' ]; then
   DATA_EVAL="$WEB_BOOK_WIKI_UNCASED_EVAL"
 fi
 
-if [ "$MODEL" = 'base' ]; then
+if [ "$MODEL" = 'small' ]; then
+  BERT_MODEL="bert_6_768_12"
+elif [ "$MODEL" = 'base' ]; then
   BERT_MODEL="bert_12_768_12"
 elif [ "$MODEL" = 'large' ]; then
   BERT_MODEL="bert_24_1024_16"
