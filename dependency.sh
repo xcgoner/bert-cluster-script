@@ -77,6 +77,7 @@ echo "==================== installing $REMOTE/gluon-nlp:$BRANCH ================
 git clone -b $BRANCH https://github.com/$REMOTE/gluon-nlp /fsx/$EXP || true;
 sleep 5;
 cd /fsx/$EXP;
+git pull;
 $PY setup.py -q install --user;
 $PIP list | grep gluon;
 
