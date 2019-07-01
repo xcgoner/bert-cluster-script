@@ -88,8 +88,8 @@ elif [ "$MODEL" = 'large' ]; then
 fi
 
 HVD_PREFIX=" --hostfile hosts -mca pml ob1 \
-             -mca btl ^openib -mca btl_tcp_if_exclude docker0,lo --map-by ppr:4:socket \
-             -x NCCL_MIN_NRINGS=16 -x NCCL_DEBUG=WARNING -x HOROVOD_HIERARCHICAL_ALLREDUCE=1 \
+             -mca btl ^openib -mca btl_tcp_if_exclude docker0,lo --map-by ppr:1:socket \
+             -x HOROVOD_HIERARCHICAL_ALLREDUCE=1 \
              --tag-output ";
 
 EXTRA_FLAG=""
