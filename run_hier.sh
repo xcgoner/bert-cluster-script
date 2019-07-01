@@ -89,7 +89,6 @@ fi
 
 HVD_PREFIX=" --hostfile hosts -mca pml ob1 \
              -mca btl ^openib -mca btl_tcp_if_exclude docker0,lo \
-             -x HOROVOD_HIERARCHICAL_ALLREDUCE=1 \
              --tag-output ";
 
 EXTRA_FLAG=""
