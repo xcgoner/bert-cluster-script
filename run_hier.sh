@@ -107,7 +107,7 @@ echo "creating host file ... ";
 
 rm -f hosts;
 while read line; do
-  echo "$line slots=8" >> hosts
+  echo "$line slots=1 max_slots=1" >> hosts
 done < $HOSTS
 
 CKPT_DIR="/fsx/experiment/$EXP"
