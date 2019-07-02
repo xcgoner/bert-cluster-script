@@ -87,7 +87,7 @@ elif [ "$MODEL" = 'large' ]; then
   BERT_MODEL="bert_24_1024_16"
 fi
 
-HVD_PREFIX=" --hostfile hosts -mca pml ob1 \
+HVD_PREFIX=" --hostfile hosts --bind-to none -mca pml ob1 \
              -mca btl ^openib -mca btl_tcp_if_exclude docker0,lo \
              --tag-output ";
 
