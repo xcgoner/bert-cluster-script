@@ -27,7 +27,8 @@ do
         CONFIG=$TASK-$ESP-$BS-$EPOCH-$LR-$SEED-len-512
         FULL_NAME=$NAME-$CONFIG
         # for logging, in gluon-nlp/ci/batch/docker/gluon_nlp_job.sh, change /bin/bash -c "$COMMAND" to /bin/bash -c "$COMMAND" 2>&1 result.log
-        CMD="python $SCRIPT --task_name $TASK --log_interval 100 --batch_size $BS --epochs $EPOCH --gpu $GPU --lr $LR --seed $SEED --bert_model bert_6_768_12 --pretrained_bert_parameters $CKPT --max_len 512"
-        python submit-job.py --source-ref bert-pretraining --remote https://github.com/xcgoner/gluon-nlp --name $FULL_NAME --save-path batch/temp/$FULL_NAME --conda-env gpu/py3-master --command "$CMD"
+        CMD="python $SCRIPT --task_name $TASK:q!
+         --log_interval 100 --batch_size $BS --epochs $EPOCH --gpu $GPU --lr $LR --seed $SEED --bert_model bert_6_768_12 --pretrained_bert_parameters $CKPT --max_len 512"
+        python submit-job.py --source-ref round-padding --remote https://github.com/xcgoner/gluon-nlp --name $FULL_NAME --save-path batch/temp/$FULL_NAME --conda-env gpu/py3-master --command "$CMD"
     done
 done
