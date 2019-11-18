@@ -121,7 +121,7 @@ echo -e "\n====================== command: ====================== "
 CMD=" $PY run_pretraining_localadam.py $HPARAMS --data $DATA_TRAIN \
       --data_eval $DATA_EVAL --optimizer $OPTIMIZER --warmup_ratio $WARMUP --num_steps $NSTEP --log_interval=250 --start_step=00000 \
       --ckpt_dir $CKPT_DIR/ckpt --ckpt_interval 25000 --num_buckets 10 --dataset_name $DATASET_NAME \
-      --dtype float16 --use_avg_len 512 --model $BERT_MODEL $EXTRA_FLAG "
+      --dtype float16 --use_avg_len --model $BERT_MODEL $EXTRA_FLAG "
 echo -e "$CMD \n =====================================================\n"
 
 echo -e "\n=================== mpirun command: ================== "
